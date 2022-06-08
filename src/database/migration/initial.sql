@@ -8,7 +8,7 @@ CREATE TABLE users (
 
 CREATE TABLE posts (
 	id serial NOT NULL,
-	"userId" uuid NOT NULL,
+	"userId" INT NOT NULL,
 	text TEXT NOT NULL,
 	url TEXT,
 	CONSTRAINT posts_pk PRIMARY KEY (id)
@@ -16,16 +16,16 @@ CREATE TABLE posts (
 
 CREATE TABLE comments (
 	id serial NOT NULL,
-	"postId" uuid NOT NULL,
+	"postId" INT NOT NULL,
 	text TEXT NOT NULL,
-	"userId" uuid NOT NULL,
+	"userId" INT NOT NULL,
 	CONSTRAINT comments_pk PRIMARY KEY (id)
 );
 
 CREATE TABLE likes (
 	id serial NOT NULL,
-	"postId" uuid NOT NULL,
-	"userId" uuid NOT NULL,
+	"postId" INT NOT NULL,
+	"userId" INT NOT NULL,
 	CONSTRAINT likes_pk PRIMARY KEY (id)
 );
 
@@ -37,15 +37,15 @@ CREATE TABLE trends (
 
 CREATE TABLE friends (
 	id serial NOT NULL,
-	user1Id uuid NOT NULL,
-	user2Id uuid NOT NULL,
+	user1Id INT NOT NULL,
+	user2Id INT NOT NULL,
 	CONSTRAINT friends_pk PRIMARY KEY (id)
 );
 
 CREATE TABLE posts_trends (
 	id serial NOT NULL,
-	"postId" uuid NOT NULL,
-	trendId uuid NOT NULL,
+	"postId" INT NOT NULL,
+	trendId INT NOT NULL,
 	CONSTRAINT posts_trends_pk PRIMARY KEY (id)
 );
 

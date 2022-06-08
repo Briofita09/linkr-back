@@ -12,5 +12,5 @@ const execute = async () => {
 
 execute()
   .then(() => console.log("Banco de dados criado com sucesso\n"))
-  .catch((err) => console.log({ error: err.toString(), message: "Erro ao criar banco de dados" },'\n'));
+  .catch((err) => console.log({ error: err, message: "Erro ao criar banco de dados" },'\n'));
 
