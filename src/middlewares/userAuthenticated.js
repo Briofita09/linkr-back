@@ -1,6 +1,8 @@
-import { verify } from 'jsonwebtoken'
-import * as UserRepository from '../database/repositories/users.repository'
-import { AppError } from '../errors/AppError'
+import jwt from 'jsonwebtoken'
+import * as UserRepository from '../database/repositories/users.repository.js'
+import { AppError } from '../errors/appError.js'
+
+const { verify } = jwt
 
 export const UserAuthenticated = async (req, res, next) => {
     const authHeader = req.headers.authorization
@@ -16,7 +18,7 @@ export const UserAuthenticated = async (req, res, next) => {
         const decoded = verify(token, process.env.JWT_SECRET)
 
         const user_id = decoded.sub
-        
+
         const user = await UserRepository.findById(user_id)
 
         if (!user) throw new AppError("JWT_ERROR", 401)

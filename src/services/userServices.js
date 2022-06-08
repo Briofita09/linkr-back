@@ -1,5 +1,5 @@
-import * as UserRepository from "../../database/repositories/users.repository.js";
-import { AppError } from './../../errors/appError.js'
+import * as UserRepository from "../database/repositories/users.repository.js";
+import { AppError } from './../errors/appError.js'
 
 export const getUserService = async (params) => {
     const queries = []
@@ -9,4 +9,9 @@ export const getUserService = async (params) => {
     const user = await UserRepository.findOne(queries, 'AND');
     if (!user) throw new AppError('Usuário não encontrado', 404, 'id');
     return user
+}
+
+export const createUserService = async ({ name, email, password }) => {
+    const newUser = await UserRepository.create({ name, email, password });
+    return newUser
 }
