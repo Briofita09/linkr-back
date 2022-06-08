@@ -6,7 +6,7 @@ const execute = async () => {
   console.log("\nCriando Banco...\n");
 
   const __dirname = path.resolve(path.dirname(""));
-  const sql = fs.readFileSync(__dirname + "\\src\\database\\migration\\initial.sql", { encoding: "UTF-8" });
+  const sql = fs.readFileSync(__dirname + "/src/database/migration/initial.sql", { encoding: "UTF-8" });
   await db.query(sql);
 };
 
