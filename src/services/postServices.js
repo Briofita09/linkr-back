@@ -1,8 +1,10 @@
 import * as PostRepository from '../database/repositories/posts.repository.js';
 import { AppError } from '../errors/appError.js';
+import { getTrends } from '../utils/getTrends.js';
 
 export const createPostService = async ({ userId, text, url }) => {
-    const post = await PostRepository.create({ userId, text, url });
+    const trends = getTrends(text);
+    const post = await PostRepository.create({ userId, text, url }, trends);
     return post;
 }
 
